@@ -19,7 +19,7 @@ deno task test
 
 ## Support
 
-Danet is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [join our discord](https://discord.gg/Q7ZHuDPgjA).
+Danet is an MIT-licensed open source project. If you'd like to come along the journey, please [join our discord](https://discord.gg/Q7ZHuDPgjA).
 
 ## License
 
