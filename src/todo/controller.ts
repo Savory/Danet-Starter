@@ -1,8 +1,8 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '../deps.ts';
-import { Todo } from './class.ts';
-import { TodoService } from './service.ts';
+import { Body, Controller, Delete, Get, Param, Post, Put } from "../deps.ts";
+import { Todo } from "./class.ts";
+import { TodoService } from "./service.ts";
 
-@Controller('todo')
+@Controller("todo")
 export class TodoController {
   constructor(public todoService: TodoService) {
   }
@@ -12,8 +12,8 @@ export class TodoController {
     return this.todoService.getAll();
   }
 
-  @Get(':id')
-  getTodoById(@Param('id') todoId: string) {
+  @Get(":id")
+  getTodoById(@Param("id") todoId: string) {
     return this.todoService.getById(todoId);
   }
 
@@ -22,13 +22,13 @@ export class TodoController {
     return this.todoService.create(todo);
   }
 
-  @Put(':id')
-  updateTodo(@Param('id') todoId: string, @Body() todo: Todo) {
+  @Put(":id")
+  updateTodo(@Param("id") todoId: string, @Body() todo: Todo) {
     return this.todoService.update(todoId, todo);
   }
 
-  @Delete(':id')
-  deleteOne(@Param('id') todoId: string) {
+  @Delete(":id")
+  deleteOne(@Param("id") todoId: string) {
     return this.todoService.deleteOneById(todoId);
   }
 }

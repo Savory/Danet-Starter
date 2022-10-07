@@ -1,6 +1,6 @@
-import { Controller, Get } from './deps.ts';
+import { Controller, Get } from "./deps.ts";
 
-@Controller('')
+@Controller("")
 export class AppController {
   constructor() {
   }

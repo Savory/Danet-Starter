@@ -1,21 +1,22 @@
-import { Injectable } from '../deps.ts';
-import { Todo } from './class.ts';
+import { Injectable } from "../deps.ts";
+import { Todo } from "./class.ts";
 
 @Injectable()
 export class TodoService {
   private todos: Todo[] = [];
   getAll() {
-      return [...this.todos];
+    return [...this.todos];
   }
 
   getById(id: string) {
     const todo = this.todos.find((t: Todo) => t.id === id);
-    if (todo)
-      return {...todo}
+    if (todo) {
+      return { ...todo };
+    }
     return null;
   }
 
-  create(todo: Omit<Todo, 'id'>) {
+  create(todo: Omit<Todo, "id">) {
     const createdTodo = new Todo(todo.title, todo.content);
     this.todos.push(createdTodo);
     return createdTodo;

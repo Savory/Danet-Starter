@@ -5,6 +5,7 @@
 ## Description
 
 [Danet](https://github.com/savory/danet) framework starter repository.
+
 ## Running the app
 
 ```bash
@@ -19,7 +20,8 @@ deno task test
 
 ## Support
 
-Danet is an MIT-licensed open source project. If you'd like to come along the journey, please [join our discord](https://discord.gg/Q7ZHuDPgjA).
+Danet is an MIT-licensed open source project. If you'd like to come along the
+journey, please [join our discord](https://discord.gg/Q7ZHuDPgjA).
 
 ## License
 
