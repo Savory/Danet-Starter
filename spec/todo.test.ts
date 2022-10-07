@@ -1,4 +1,3 @@
-import { DanetApplication } from 'https://deno.land/x/danet@v0.6.2/src/app.ts';
 import { bootstrap } from '../src/bootstrap.ts';
 import {
   afterEach, beforeEach,
@@ -11,6 +10,7 @@ import {
 } from 'https://deno.land/std@0.140.0/testing/asserts.ts';
 import { Todo } from '../src/todo/class.ts';
 import { TodoService } from '../src/todo/service.ts';
+import { DanetApplication } from '../src/deps.ts';
 
 
 let app: DanetApplication;
@@ -26,7 +26,7 @@ describe('Todo', async () => {
   beforeEach(async () => {
     app = await bootstrap();
     server = await app.listen(0);
-    todoService = app.get<TodoService>(TodoService);
+    todoService = await app.get<TodoService>(TodoService);
     port = server.port;
   });
 
