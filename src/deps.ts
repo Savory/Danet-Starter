@@ -9,4 +9,5 @@ export {
   Param,
   Post,
   Put,
-} from "https://deno.land/x/danet@v1.0.0/mod.ts";
+} from "https://deno.land/x/danet@1.0.2/mod.ts";
+export * from "https://deno.land/x/danet@1.0.2/validation.ts"

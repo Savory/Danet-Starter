@@ -20,7 +20,7 @@ let todoService: TodoService;
 let port: number;
 const payload: Omit<Todo, "id"> = {
   title: "my todo",
-  content: "content",
+  content: "long enough content for passing validation",
 };
 describe("Todo", () => {
   beforeEach(async () => {
@@ -41,10 +41,29 @@ describe("Todo", () => {
       body: JSON.stringify(payload),
     });
     const returnedData: Todo = await res.json();
-
+    console.log(returnedData);
     assertExists(returnedData.id);
     assertEquals(returnedData.title, payload.title);
     assertEquals(returnedData.content, payload.content);
+  });
+
+
+  it("get an HTTP 400 error is body is not well formatted", async () => {
+    const res = await fetch(`http://localhost:${port}/todo`, {
+      method: "POST",
+      body: JSON.stringify({
+        title: "my todo",
+        content: "tooshortcontent",
+      }),
+    });
+    const returnedData: any = await res.json();
+    assertArrayIncludes(returnedData.reasons, [{
+      "property": "content",
+      "errorMessage": "Length must be greater than 20",
+      "constraints": [
+        20
+      ]
+    }])
   });
 
   it("get all todos", async () => {
@@ -85,7 +104,7 @@ describe("Todo", () => {
   it("update one todo by id", async () => {
     const firstAdded = todoService.create({
       title: "first todo",
-      content: "first content",
+      content: "content is long enough for validation again",
     });
     const newPayload = { ...firstAdded, title: "new title" };
 

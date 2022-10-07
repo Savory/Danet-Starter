@@ -1,5 +1,15 @@
+import { IsString, LengthGreater }  from '../deps.ts';
+
 export class Todo {
   readonly id = crypto.randomUUID();
-  constructor(public title: string, public content: string) {
+  @IsString()
+  public title: string;
+
+  @IsString()
+  @LengthGreater(20)
+  public content: string;
+  constructor(title: string, content: string) {
+    this.title = title;
+    this.content = content;
   }
 }
