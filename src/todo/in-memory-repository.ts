@@ -8,14 +8,14 @@ export class InMemoryTodoRepository implements Repository<Todo> {
   }
 
   async getById(id: string) {
-    const todo = this.todos.find((t: Todo) => t.id === id);
+    const todo = this.todos.find((t: Todo) => t._id === id);
     if (todo) {
-      return { ...todo };
+      return { ...todo } as Todo;
     }
-    return null;
+    return undefined;
   }
 
-  async create(todo: Omit<Todo, "id">) {
+  async create(todo: Omit<Todo, "_id">) {
     const createdTodo = new Todo(todo.title, todo.content);
     this.todos.push(createdTodo);
     return createdTodo;
@@ -23,7 +23,7 @@ export class InMemoryTodoRepository implements Repository<Todo> {
 
   async updateOne(todoId: string, todo: Todo) {
     this.todos.forEach((t: Todo) => {
-      if (t.id === todoId) {
+      if (t._id === todoId) {
         t.title = todo.title;
         t.content = todo.content;
       }
@@ -32,7 +32,7 @@ export class InMemoryTodoRepository implements Repository<Todo> {
   }
 
   async deleteOne(todoId: string) {
-    const todoIndex = this.todos.findIndex((t: Todo) => t.id === todoId);
+    const todoIndex = this.todos.findIndex((t: Todo) => t._id === todoId);
     this.todos.splice(todoIndex, 1);
   }
 

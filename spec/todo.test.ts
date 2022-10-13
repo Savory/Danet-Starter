@@ -62,7 +62,7 @@ describe("Todo", () => {
         content: "tooshortcontent",
       }),
     });
-    const returnedData: unknown = await res.json();
+    const returnedData: { reasons: unknown[] } = await res.json();
     assertArrayIncludes(returnedData.reasons, [{
       "property": "content",
       "errorMessage": "Length must be greater than 20",
