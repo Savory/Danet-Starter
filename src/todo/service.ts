@@ -1,42 +1,34 @@
-import { Injectable } from "../deps.ts";
+import { Inject, Injectable } from "../deps.ts";
 import { Todo } from "./class.ts";
+import type { Repository } from "../database/repository.ts";
+import { USER_REPOSITORY } from "./constant.ts";
 
 @Injectable()
 export class TodoService {
-  private todos: Todo[] = [];
+  constructor(@Inject(USER_REPOSITORY) private repository: Repository<Todo>) {
+  }
+
   getAll() {
-    return [...this.todos];
+    return this.repository.getAll();
   }
 
   getById(id: string) {
-    const todo = this.todos.find((t: Todo) => t.id === id);
-    if (todo) {
-      return { ...todo };
-    }
-    return null;
+    return this.repository.getById(id);
   }
 
-  create(todo: Omit<Todo, "id">) {
-    const createdTodo = new Todo(todo.title, todo.content);
-    this.todos.push(createdTodo);
-    return createdTodo;
+  async create(todo: Omit<Todo, "_id">) {
+    return this.repository.create(todo);
   }
 
   update(todoId: string, todo: Todo) {
-    this.todos.forEach((t: Todo) => {
-      if (t.id === todoId) {
-        t.title = todo.title;
-        t.content = todo.content;
-      }
-    });
+    return this.repository.updateOne(todoId, todo);
   }
 
-  deleteOneById(todoId: string) {
-    const todoIndex = this.todos.findIndex((t: Todo) => t.id === todoId);
-    this.todos.splice(todoIndex, 1);
+  async deleteOneById(todoId: string) {
+    await this.repository.deleteOne(todoId);
   }
 
   deleteAll() {
-    this.todos = [];
+    return this.repository.deleteAll();
   }
 }

@@ -8,27 +8,27 @@ export class TodoController {
   }
 
   @Get()
-  getAllTodo() {
+  async getAllTodo() {
     return this.todoService.getAll();
   }
 
   @Get(":id")
-  getTodoById(@Param("id") todoId: string) {
+  async getTodoById(@Param("id") todoId: string) {
     return this.todoService.getById(todoId);
   }
 
   @Post()
-  createTodo(@Body() todo: Todo) {
+  async createTodo(@Body() todo: Todo) {
     return this.todoService.create(todo);
   }
 
   @Put(":id")
-  updateTodo(@Param("id") todoId: string, @Body() todo: Todo) {
+  async updateTodo(@Param("id") todoId: string, @Body() todo: Todo) {
     return this.todoService.update(todoId, todo);
   }
 
   @Delete(":id")
-  deleteOne(@Param("id") todoId: string) {
+  async deleteOne(@Param("id") todoId: string) {
     return this.todoService.deleteOneById(todoId);
   }
 }

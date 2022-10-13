@@ -1,4 +1,9 @@
 {
+  "lint": {
+    "rules": {
+      "exclude": ["require-await"]
+    }
+  },
   "compilerOptions": {
     "emitDecoratorMetadata": true
   },

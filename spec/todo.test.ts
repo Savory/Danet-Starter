@@ -1,7 +1,8 @@
 import { bootstrap } from "../src/bootstrap.ts";
 import {
+  afterAll,
   afterEach,
-  beforeEach,
+  beforeAll,
   describe,
   it,
 } from "https://deno.land/std@0.140.0/testing/bdd.ts";
@@ -18,21 +19,28 @@ let app: DanetApplication;
 let server;
 let todoService: TodoService;
 let port: number;
-const payload: Omit<Todo, "id"> = {
+const payload: Omit<Todo, "_id"> = {
   title: "my todo",
   content: "long enough content for passing validation",
 };
 describe("Todo", () => {
-  beforeEach(async () => {
+  beforeAll(async () => {
     app = await bootstrap();
     server = await app.listen(0);
     todoService = await app.get<TodoService>(TodoService);
     port = server.port;
+
+    // we need this to make oak listen outside of any test to not leak
+    const res = await fetch(`http://localhost:${port}`);
+    await res.text();
   });
 
   afterEach(async () => {
-    await app.close();
     await todoService.deleteAll();
+  });
+
+  afterAll(async () => {
+    await app.close();
   });
 
   it("simple todo creation", async () => {
@@ -41,12 +49,10 @@ describe("Todo", () => {
       body: JSON.stringify(payload),
     });
     const returnedData: Todo = await res.json();
-    console.log(returnedData);
-    assertExists(returnedData.id);
+    assertExists(returnedData._id);
     assertEquals(returnedData.title, payload.title);
     assertEquals(returnedData.content, payload.content);
   });
-
 
   it("get an HTTP 400 error is body is not well formatted", async () => {
     const res = await fetch(`http://localhost:${port}/todo`, {
@@ -56,22 +62,22 @@ describe("Todo", () => {
         content: "tooshortcontent",
       }),
     });
-    const returnedData: any = await res.json();
+    const returnedData: unknown = await res.json();
     assertArrayIncludes(returnedData.reasons, [{
       "property": "content",
       "errorMessage": "Length must be greater than 20",
       "constraints": [
-        20
-      ]
-    }])
+        20,
+      ],
+    }]);
   });
 
   it("get all todos", async () => {
-    const firstAdded = todoService.create({
+    const firstAdded = await todoService.create({
       title: "first todo",
       content: "first content",
     });
-    const secondAdded = todoService.create({
+    const secondAdded = await todoService.create({
       title: "second todo",
       content: "second content",
     });
@@ -87,12 +93,12 @@ describe("Todo", () => {
   });
 
   it("get one todo by id", async () => {
-    const firstAdded = todoService.create({
+    const firstAdded = await todoService.create({
       title: "first todo",
       content: "first content",
     });
 
-    const res = await fetch(`http://localhost:${port}/todo/${firstAdded.id}`, {
+    const res = await fetch(`http://localhost:${port}/todo/${firstAdded._id}`, {
       method: "GET",
     });
     const returnedTodo: Todo = await res.json();
@@ -102,35 +108,36 @@ describe("Todo", () => {
   });
 
   it("update one todo by id", async () => {
-    const firstAdded = todoService.create({
+    const firstAdded = await todoService.create({
       title: "first todo",
       content: "content is long enough for validation again",
     });
-    const newPayload = { ...firstAdded, title: "new title" };
-
-    await (await fetch(`http://localhost:${port}/todo/${firstAdded.id}`, {
+    await (await fetch(`http://localhost:${port}/todo/${firstAdded._id}`, {
       method: "PUT",
-      body: JSON.stringify(newPayload),
+      body: JSON.stringify({
+        title: "newtitle",
+        content: "content is long enough for validation again",
+      }),
     })).text();
     const returnedTodo =
-      await (await fetch(`http://localhost:${port}/todo/${firstAdded.id}`, {
+      await (await fetch(`http://localhost:${port}/todo/${firstAdded._id}`, {
         method: "GET",
       })).json();
 
-    assertEquals(returnedTodo, newPayload);
+    assertEquals(returnedTodo.title, "newtitle");
   });
 
   it("delete one todo", async () => {
-    const firstAdded = todoService.create({
+    const firstAdded = await todoService.create({
       title: "first todo",
       content: "first content",
     });
 
-    const res = await fetch(`http://localhost:${port}/todo/${firstAdded.id}`, {
+    const res = await fetch(`http://localhost:${port}/todo/${firstAdded._id}`, {
       method: "DELETE",
     });
     await res.text();
 
-    assertEquals(todoService.getById(firstAdded.id), null);
+    assertEquals(await todoService.getById(firstAdded._id), undefined);
   });
 });

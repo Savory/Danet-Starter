@@ -1,7 +1,7 @@
-import { IsString, LengthGreater }  from '../deps.ts';
+import { IsString, LengthGreater } from "../deps.ts";
 
 export class Todo {
-  readonly id = crypto.randomUUID();
+  readonly _id = crypto.randomUUID();
   @IsString()
   public title: string;
 
