@@ -19,9 +19,14 @@ export type {
 } from "https://deno.land/x/danet@1.0.6/src/hook/interfaces.ts";
 export * from "https://deno.land/x/danet@1.0.6/validation.ts";
 export { config } from "https://deno.land/x/dotenv/mod.ts";
+
+// MongoDB
 export {
   Collection,
   Database,
   MongoClient,
   ObjectId,
 } from "https://deno.land/x/mongo@v0.31.1/mod.ts";
+
+// Postgres
+export { Client } from "https://deno.land/x/postgres@v0.16.1/mod.ts";

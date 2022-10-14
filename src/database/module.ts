@@ -1,10 +1,11 @@
 import { Module, TokenInjector } from "../deps.ts";
-import { MongoDBService } from "./mongoDBService.ts";
+// import { MongoDBService } from "./mongoDBService.ts";
+import { PostgresService } from "./postgresService.ts";
 
 export const DATABASE = "DATABASE";
 
 @Module({
   imports: [],
-  injectables: [new TokenInjector(MongoDBService, DATABASE)], // change MongoDBService by any service using other database engine if needed.
+  injectables: [new TokenInjector(PostgresService, DATABASE)], // change PostgresService by any service using other database engine if needed.
 })
 export class DatabaseModule {}

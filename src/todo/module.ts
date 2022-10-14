@@ -3,13 +3,13 @@ import { TodoService } from "./service.ts";
 import { Module, TokenInjector } from "../deps.ts";
 import { USER_REPOSITORY } from "./constant.ts";
 import { DatabaseModule } from "../database/module.ts";
-import { InMemoryTodoRepository } from './in-memory-repository.ts';
+import { PostgresRepository } from "./postgres-repository.ts";
 
 @Module({
   imports: [DatabaseModule],
   controllers: [TodoController],
   injectables: [
-    new TokenInjector(InMemoryTodoRepository, USER_REPOSITORY),
+    new TokenInjector(PostgresRepository, USER_REPOSITORY),
     TodoService,
   ], // change mongoDbRepository by any custom repository using other database engine if needed
 })
