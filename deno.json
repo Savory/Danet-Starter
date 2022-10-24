@@ -4,6 +4,11 @@
       "exclude": ["require-await"]
     }
   },
+  "fmt": {
+    "options": {
+      "singleQuote": true
+    }
+  },
   "compilerOptions": {
     "emitDecoratorMetadata": true
   },

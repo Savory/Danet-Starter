@@ -1,7 +1,7 @@
-import { Module, TokenInjector } from "danet/mod.ts";
+import { Module, TokenInjector } from 'danet/mod.ts';
 import { MongodbService } from './mongodb.service.ts';
 
-export const DATABASE = "DATABASE";
+export const DATABASE = 'DATABASE';
 
 @Module({
   imports: [],

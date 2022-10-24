@@ -1,29 +1,29 @@
-import { bootstrap } from "../src/bootstrap.ts";
+import { bootstrap } from '../src/bootstrap.ts';
 import {
   afterAll,
   afterEach,
   beforeAll,
   describe,
   it,
-} from "https://deno.land/std@0.140.0/testing/bdd.ts";
+} from 'https://deno.land/std@0.140.0/testing/bdd.ts';
 import {
   assertArrayIncludes,
   assertEquals,
   assertExists,
-} from "https://deno.land/std@0.140.0/testing/asserts.ts";
-import { Todo } from "../src/todo/class.ts";
-import { TodoService } from "../src/todo/service.ts";
-import { DanetApplication } from "danet/mod.ts";
+} from 'https://deno.land/std@0.140.0/testing/asserts.ts';
+import { Todo } from '../src/todo/class.ts';
+import { TodoService } from '../src/todo/service.ts';
+import { DanetApplication } from 'danet/mod.ts';
 
 let app: DanetApplication;
 let server;
 let todoService: TodoService;
 let port: number;
-const payload: Omit<Todo, "_id"> = {
-  title: "my todo",
-  content: "long enough content for passing validation",
+const payload: Omit<Todo, '_id'> = {
+  title: 'my todo',
+  content: 'long enough content for passing validation',
 };
-describe("Todo", () => {
+describe('Todo', () => {
   beforeAll(async () => {
     app = await bootstrap();
     server = await app.listen(0);
@@ -43,9 +43,9 @@ describe("Todo", () => {
     await app.close();
   });
 
-  it("simple todo creation", async () => {
+  it('simple todo creation', async () => {
     const res = await fetch(`http://localhost:${port}/todo`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(payload),
     });
     const returnedData: Todo = await res.json();
@@ -54,36 +54,36 @@ describe("Todo", () => {
     assertEquals(returnedData.content, payload.content);
   });
 
-  it("get an HTTP 400 error is body is not well formatted", async () => {
+  it('get an HTTP 400 error is body is not well formatted', async () => {
     const res = await fetch(`http://localhost:${port}/todo`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify({
-        title: "my todo",
-        content: "tooshortcontent",
+        title: 'my todo',
+        content: 'tooshortcontent',
       }),
     });
     const returnedData: { reasons: unknown[] } = await res.json();
     assertArrayIncludes(returnedData.reasons, [{
-      "property": "content",
-      "errorMessage": "Length must be greater than 20",
-      "constraints": [
+      'property': 'content',
+      'errorMessage': 'Length must be greater than 20',
+      'constraints': [
         20,
       ],
     }]);
   });
 
-  it("get all todos", async () => {
+  it('get all todos', async () => {
     const firstAdded = await todoService.create({
-      title: "first todo",
-      content: "first content",
+      title: 'first todo',
+      content: 'first content',
     });
     const secondAdded = await todoService.create({
-      title: "second todo",
-      content: "second content",
+      title: 'second todo',
+      content: 'second content',
     });
 
     const res = await fetch(`http://localhost:${port}/todo`, {
-      method: "GET",
+      method: 'GET',
     });
 
     const returnedData: Todo[] = await res.json();
@@ -92,14 +92,14 @@ describe("Todo", () => {
     assertArrayIncludes(returnedData, plainArray);
   });
 
-  it("get one todo by id", async () => {
+  it('get one todo by id', async () => {
     const firstAdded = await todoService.create({
-      title: "first todo",
-      content: "first content",
+      title: 'first todo',
+      content: 'first content',
     });
 
     const res = await fetch(`http://localhost:${port}/todo/${firstAdded._id}`, {
-      method: "GET",
+      method: 'GET',
     });
     const returnedTodo: Todo = await res.json();
     const plainObject = JSON.parse(JSON.stringify(firstAdded));
@@ -107,34 +107,34 @@ describe("Todo", () => {
     assertEquals(returnedTodo, plainObject);
   });
 
-  it("update one todo by id", async () => {
+  it('update one todo by id', async () => {
     const firstAdded = await todoService.create({
-      title: "first todo",
-      content: "content is long enough for validation again",
+      title: 'first todo',
+      content: 'content is long enough for validation again',
     });
     await (await fetch(`http://localhost:${port}/todo/${firstAdded._id}`, {
-      method: "PUT",
+      method: 'PUT',
       body: JSON.stringify({
-        title: "newtitle",
-        content: "content is long enough for validation again",
+        title: 'newtitle',
+        content: 'content is long enough for validation again',
       }),
     })).text();
     const returnedTodo =
       await (await fetch(`http://localhost:${port}/todo/${firstAdded._id}`, {
-        method: "GET",
+        method: 'GET',
       })).json();
 
-    assertEquals(returnedTodo.title, "newtitle");
+    assertEquals(returnedTodo.title, 'newtitle');
   });
 
-  it("delete one todo", async () => {
+  it('delete one todo', async () => {
     const firstAdded = await todoService.create({
-      title: "first todo",
-      content: "first content",
+      title: 'first todo',
+      content: 'first content',
     });
 
     const res = await fetch(`http://localhost:${port}/todo/${firstAdded._id}`, {
-      method: "DELETE",
+      method: 'DELETE',
     });
     await res.text();
 

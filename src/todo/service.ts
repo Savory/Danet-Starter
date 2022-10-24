@@ -1,7 +1,7 @@
-import { Inject, Injectable } from "danet/mod.ts";
-import { Todo } from "./class.ts";
-import type { Repository } from "../database/repository.ts";
-import { USER_REPOSITORY } from "./constant.ts";
+import { Inject, Injectable } from 'danet/mod.ts';
+import { Todo } from './class.ts';
+import type { Repository } from '../database/repository.ts';
+import { USER_REPOSITORY } from './constant.ts';
 
 @Injectable()
 export class TodoService {
@@ -16,7 +16,7 @@ export class TodoService {
     return this.repository.getById(id);
   }
 
-  async create(todo: Omit<Todo, "_id">) {
+  async create(todo: Omit<Todo, '_id'>) {
     return this.repository.create(todo);
   }
 

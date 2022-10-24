@@ -1,8 +1,8 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from "danet/mod.ts";
-import { Todo } from "./class.ts";
-import { TodoService } from "./service.ts";
+import { Body, Controller, Delete, Get, Param, Post, Put } from 'danet/mod.ts';
+import { Todo } from './class.ts';
+import { TodoService } from './service.ts';
 
-@Controller("todo")
+@Controller('todo')
 export class TodoController {
   constructor(public todoService: TodoService) {
   }
@@ -12,8 +12,8 @@ export class TodoController {
     return this.todoService.getAll();
   }
 
-  @Get(":id")
-  async getTodoById(@Param("id") todoId: string) {
+  @Get(':id')
+  async getTodoById(@Param('id') todoId: string) {
     return this.todoService.getById(todoId);
   }
 
@@ -22,13 +22,13 @@ export class TodoController {
     return this.todoService.create(todo);
   }
 
-  @Put(":id")
-  async updateTodo(@Param("id") todoId: string, @Body() todo: Todo) {
+  @Put(':id')
+  async updateTodo(@Param('id') todoId: string, @Body() todo: Todo) {
     return this.todoService.update(todoId, todo);
   }
 
-  @Delete(":id")
-  async deleteOne(@Param("id") todoId: string) {
+  @Delete(':id')
+  async deleteOne(@Param('id') todoId: string) {
     return this.todoService.deleteOneById(todoId);
   }
 }

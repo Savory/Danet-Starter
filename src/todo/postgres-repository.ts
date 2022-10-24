@@ -1,8 +1,8 @@
-import { Repository } from "../database/repository.ts";
-import { Todo } from "./class.ts";
-import { Inject } from "danet/mod.ts";
-import { DATABASE } from "../database/module.ts";
-import { PostgresService } from "../database/postgres.service.ts";
+import { Repository } from '../database/repository.ts';
+import { Todo } from './class.ts';
+import { Inject } from 'danet/mod.ts';
+import { DATABASE } from '../database/module.ts';
+import { PostgresService } from '../database/postgres.service.ts';
 
 export class PostgresRepository implements Repository<Todo> {
   constructor(@Inject(DATABASE) private dbService: PostgresService) {
@@ -21,7 +21,7 @@ export class PostgresRepository implements Repository<Todo> {
     return rows[0];
   }
 
-  async create(todo: Omit<Todo, "_id">) {
+  async create(todo: Omit<Todo, '_id'>) {
     const { rows } = await this.dbService.client.queryObject<Todo>(
       `INSERT INTO TODO (title, content) VALUES ('${todo.title}', '${todo.content}') RETURNING _id, title, content;`,
     );

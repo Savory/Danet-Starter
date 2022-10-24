@@ -1,5 +1,5 @@
-import { Repository } from "../database/repository.ts";
-import { Todo } from "./class.ts";
+import { Repository } from '../database/repository.ts';
+import { Todo } from './class.ts';
 
 export class InMemoryTodoRepository implements Repository<Todo> {
   private todos: Todo[] = [];
@@ -15,7 +15,7 @@ export class InMemoryTodoRepository implements Repository<Todo> {
     return undefined;
   }
 
-  async create(todo: Omit<Todo, "_id">) {
+  async create(todo: Omit<Todo, '_id'>) {
     const createdTodo = new Todo(todo.title, todo.content);
     this.todos.push(createdTodo);
     return createdTodo;

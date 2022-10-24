@@ -1,4 +1,4 @@
-import { IsString, LengthGreater } from "danet/validation.ts";
+import { IsString, LengthGreater } from 'danet/validation.ts';
 
 export class Todo {
   readonly _id = crypto.randomUUID();
