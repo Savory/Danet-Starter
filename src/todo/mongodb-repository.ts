@@ -1,6 +1,6 @@
 import { Repository } from '../database/repository.ts';
 import { Todo } from './class.ts';
-import { ObjectId } from 'mongo';
+import { ObjectId } from 'mongo/mod.ts';
 import { Inject } from 'danet/mod.ts';
 import { DATABASE } from '../database/module.ts';
 import { MongodbService } from '../database/mongodb.service.ts';

@@ -1,5 +1,6 @@
-import { Injectable, OnAppBootstrap, OnAppClose } from 'danet/mod.ts';
-import { Client } from 'postgres';
+import { Injectable } from 'danet/mod.ts';
+import { OnAppBootstrap, OnAppClose } from 'danet/src/hook/interfaces.ts';
+import { Client } from 'postgres/mod.ts';
 
 @Injectable()
 export class PostgresService implements OnAppBootstrap, OnAppClose {
