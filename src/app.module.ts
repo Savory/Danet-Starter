@@ -1,4 +1,4 @@
-import { Module } from "./deps.ts";
+import { Module } from "danet/mod.ts";
 import { TodoModule } from "./todo/module.ts";
 import { AppController } from "./app.controller.ts";
 

@@ -1,4 +1,5 @@
-import { Client, Injectable, OnAppBootstrap, OnAppClose } from "../deps.ts";
+import { Injectable, OnAppBootstrap, OnAppClose } from "danet/mod.ts";
+import { Client } from 'postgres';
 
 @Injectable()
 export class PostgresService implements OnAppBootstrap, OnAppClose {

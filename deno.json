@@ -7,8 +7,9 @@
   "compilerOptions": {
     "emitDecoratorMetadata": true
   },
+  "importMap": "./import_map.json",
   "tasks": {
-    "launch-server": "deno run --allow-net --unstable --allow-env run.ts",
+    "launch-server": "deno run --allow-net --allow-read --unstable --allow-env run.ts",
     "test": "NO_LOG=true deno test --allow-env --allow-net --allow-read -A --unstable spec"
   }
 }

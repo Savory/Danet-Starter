@@ -1,11 +1,11 @@
 import {
-  Collection,
-  Database,
   Injectable,
-  MongoClient,
   OnAppBootstrap,
   OnAppClose,
-} from "../deps.ts";
+} from "danet/mod.ts";
+import { MongoClient, Collection, Database } from 'mongo';
+
+
 
 @Injectable()
 export class MongodbService implements OnAppBootstrap, OnAppClose {

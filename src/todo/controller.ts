@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from "../deps.ts";
+import { Body, Controller, Delete, Get, Param, Post, Put } from "danet/mod.ts";
 import { Todo } from "./class.ts";
 import { TodoService } from "./service.ts";
 

@@ -13,7 +13,7 @@ import {
 } from "https://deno.land/std@0.140.0/testing/asserts.ts";
 import { Todo } from "../src/todo/class.ts";
 import { TodoService } from "../src/todo/service.ts";
-import { DanetApplication } from "../src/deps.ts";
+import { DanetApplication } from "danet/mod.ts";
 
 let app: DanetApplication;
 let server;

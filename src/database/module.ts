@@ -1,4 +1,4 @@
-import { Module, TokenInjector } from "../deps.ts";
+import { Module, TokenInjector } from "danet/mod.ts";
 import { MongodbService } from './mongodb.service.ts';
 
 export const DATABASE = "DATABASE";
