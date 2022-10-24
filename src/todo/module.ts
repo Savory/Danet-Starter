@@ -3,6 +3,8 @@ import { TodoService } from "./service.ts";
 import { Module, TokenInjector } from "../deps.ts";
 import { USER_REPOSITORY } from "./constant.ts";
 // import { DatabaseModule } from "../database/module.ts";
+// import { PostgresRepository } from './postgres-repository.ts';
+// import { MongodbRepository } from './mongodb-repository.ts';
 import { InMemoryTodoRepository } from './in-memory-repository.ts';
 
 @Module({

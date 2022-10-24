@@ -2,7 +2,7 @@ import { Repository } from "../database/repository.ts";
 import { Todo } from "./class.ts";
 import { Inject } from "../deps.ts";
 import { DATABASE } from "../database/module.ts";
-import { PostgresService } from "../database/postgresService.ts";
+import { PostgresService } from "../database/postgres.service.ts";
 
 export class PostgresRepository implements Repository<Todo> {
   constructor(@Inject(DATABASE) private dbService: PostgresService) {

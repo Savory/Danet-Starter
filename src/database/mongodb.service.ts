@@ -8,7 +8,7 @@ import {
 } from "../deps.ts";
 
 @Injectable()
-export class MongoDBService implements OnAppBootstrap, OnAppClose {
+export class MongodbService implements OnAppBootstrap, OnAppClose {
   constructor() {}
 
   private client = new MongoClient();

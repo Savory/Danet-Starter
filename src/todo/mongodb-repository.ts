@@ -2,10 +2,10 @@ import { Repository } from "../database/repository.ts";
 import { Todo } from "./class.ts";
 import { Inject, ObjectId } from "../deps.ts";
 import { DATABASE } from "../database/module.ts";
-import { MongoDBService } from "../database/mongoDBService.ts";
+import { MongodbService } from "../database/mongodb.service.ts";
 
 export class MongodbRepository implements Repository<Todo> {
-  constructor(@Inject(DATABASE) private dbService: MongoDBService) {
+  constructor(@Inject(DATABASE) private dbService: MongodbService) {
   }
   async getAll(): Promise<Todo[]> {
     return this.dbService.getCollection<Todo>("Todo").find({}).toArray();
