@@ -6,11 +6,11 @@
 
 [Danet](https://github.com/savory/danet) framework starter repository. We recommend that you use our CLI instead of cloning the repository : 
 
-Installation
+## Installation
 Installing Deno packages as a commands is simple. You can install them under any name you want. For simplicity's sake, we install our danet-cli under the name danet.
 
 $ deno install --allow-read --allow-write --allow-run --allow-env -n danet https://deno.land/x/danet_cli/main.ts
-Basic workflow
+## Basic workflow
 Once installed, you can invoke CLI commands directly from your OS command line through the danet command. See the available danet commands by entering the following:
 
 $ danet --help
@@ -21,7 +21,7 @@ $ cd my-danet-project
 $ deno task launch-server
 In your browser, open http://localhost:3000 to see the new application running.
 
-Database Options
+## Database Options
 When creating a new project, Danet CLI will ask you what database provider you want to use between mongodb, postgres and in-memory and will generate all the required code.
 
 The only thing left if you use mongodb or postgres will be to set environment variables or put them in a .env file in your project's root folder.
