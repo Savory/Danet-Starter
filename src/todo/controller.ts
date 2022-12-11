@@ -1,17 +1,20 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from 'danet/mod.ts';
 import { Todo } from './class.ts';
 import { TodoService } from './service.ts';
+import { ReturnedType } from 'danet_swagger/decorators.ts';
 
 @Controller('todo')
 export class TodoController {
   constructor(public todoService: TodoService) {
   }
 
+  @ReturnedType(Todo, true)
   @Get()
   async getAllTodo() {
     return this.todoService.getAll();
   }
 
+  @ReturnedType(Todo)
   @Get(':id')
   async getTodoById(@Param('id') todoId: string) {
     return this.todoService.getById(todoId);
