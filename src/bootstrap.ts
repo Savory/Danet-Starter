@@ -13,7 +13,7 @@ export const bootstrap = async () => {
     .setVersion('1.0')
     .build();
   const document = await SwaggerModule.createDocument(application, spec);
-  SwaggerModule.setup('api', application, document);
+  await SwaggerModule.setup('api', application, document);
   application.addGlobalMiddlewares(loggerMiddleware);
   return application;
 };
