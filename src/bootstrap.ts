@@ -2,7 +2,7 @@ import { AppModule } from './app.module.ts';
 import { DanetApplication } from 'danet/mod.ts';
 import { configAsync } from 'dotenv/mod.ts';
 import { loggerMiddleware } from './logger.middleware.ts';
-import { SwaggerModule, SpecBuilder } from 'danet_swagger/mod.ts';
+import { SpecBuilder, SwaggerModule } from 'danet_swagger/mod.ts';
 export const bootstrap = async () => {
   await configAsync({ export: true });
   const application = new DanetApplication();
