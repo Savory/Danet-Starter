@@ -1,10 +1,5 @@
 {
   "imports": {
-    "danet/": "https://deno.land/x/danet/",
-    "dotenv/": "https://deno.land/x/dotenv/",
-    "mongo/": "https://deno.land/x/mongo@v0.31.1/",
-    "postgres/": "https://deno.land/x/postgres@v0.17.0/",
-    "danet_swagger/": "https://deno.land/x/danet_swagger@1.6.1/",
     "$fresh/": "https://deno.land/x/fresh@1.1.5/",
     "preact": "https://esm.sh/preact@10.13.1",
     "preact/": "https://esm.sh/preact@10.13.1/",

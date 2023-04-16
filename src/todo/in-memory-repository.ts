@@ -2,7 +2,7 @@ import { Repository } from '../database/repository.ts';
 import { Todo } from './class.ts';
 
 export class InMemoryTodoRepository implements Repository<Todo> {
-  private todos: Todo[] = [];
+  private todos: Todo[] = [new Todo('my title', 'my content')];
   async getAll(): Promise<Todo[]> {
     return [...this.todos];
   }
