@@ -48,3 +48,19 @@ options when calling danet new :
 
 Danet is an MIT-licensed open source project. If you'd like to come along the
 journey, please [join our discord](https://discord.gg/Q7ZHuDPgjA).
+
+## postgres specific
+
+you can run
+
+```
+deno task create-tables
+```
+
+for create todo table. above commande is alias for :
+
+```
+deno run --allow-net --allow-read --unstable --allow-env ./src/scripts/create-tables.ts
+```
+
+you can read the content of files in .src/scripts to understand more.
