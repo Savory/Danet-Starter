@@ -15,6 +15,6 @@
   "importMap": "./import_map.json",
   "tasks": {
     "launch-server": "deno run --allow-net --allow-read --unstable --allow-env run.ts",
-    "test": "deno test --allow-env --allow-net --allow-read -A --unstable spec"
+    "test": "deno test -A --unstable spec"
   }
 }
