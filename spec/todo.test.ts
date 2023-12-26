@@ -29,10 +29,6 @@ describe('Todo', () => {
     server = await app.listen(0);
     todoService = await app.get<TodoService>(TodoService);
     port = server.port;
-
-    // we need this to make oak listen outside of any test to not leak
-    const res = await fetch(`http://localhost:${port}`);
-    await res.text();
   });
 
   afterEach(async () => {
