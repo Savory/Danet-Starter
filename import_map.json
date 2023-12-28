@@ -1,6 +1,6 @@
 {
   "imports": {
-    "danet/": "https://deno.land/x/danet@2.0.2-alpha/",
+    "danet/": "https://deno.land/x/danet@2.0.0/",
     "dotenv/": "https://deno.land/std@0.191.0/dotenv/",
     "mongo/": "https://deno.land/x/mongo@v0.31.1/",
     "postgres/": "https://deno.land/x/postgres@v0.17.0/",
