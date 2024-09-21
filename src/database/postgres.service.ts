@@ -16,6 +16,14 @@ export class PostgresService implements OnAppBootstrap, OnAppClose {
       hostname: Deno.env.get('DB_HOST'),
     });
     await this.client.connect();
+    await this.client.queryObject(
+      `CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+      CREATE TABLE IF NOT EXISTS todo (
+        _id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+        title VARCHAR NOT NULL,
+        content TEXT
+      );`,
+    );
   }
 
   async onAppClose() {
