@@ -1,4 +1,4 @@
-import { Inject, Injectable } from 'danet/mod.ts';
+import { Inject, Injectable } from '@danet/core';
 import { Todo } from './class.ts';
 import type { Repository } from '../database/repository.ts';
 import { USER_REPOSITORY } from './constant.ts';

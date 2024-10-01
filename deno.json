@@ -1,7 +1,11 @@
 {
+  "name": "",
+  "version": "",
   "lint": {
     "rules": {
-      "exclude": ["require-await"]
+      "exclude": [
+        "require-await"
+      ]
     }
   },
   "fmt": {

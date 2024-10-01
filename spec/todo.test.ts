@@ -5,15 +5,15 @@ import {
   beforeAll,
   describe,
   it,
-} from 'https://deno.land/std@0.140.0/testing/bdd.ts';
+} from '@std/testing/bdd';
 import {
   assertArrayIncludes,
   assertEquals,
   assertExists,
-} from 'https://deno.land/std@0.140.0/testing/asserts.ts';
+} from '@std/assert';
 import { Todo } from '../src/todo/class.ts';
 import { TodoService } from '../src/todo/service.ts';
-import { DanetApplication } from 'danet/mod.ts';
+import { DanetApplication } from '@danet/core';
 
 let app: DanetApplication;
 let server;

@@ -1,9 +1,11 @@
 {
   "imports": {
-    "danet/": "https://deno.land/x/danet/",
-    "dotenv/": "https://deno.land/std@0.191.0/dotenv/",
-    "mongo/": "https://deno.land/x/mongo@v0.31.1/",
-    "postgres/": "https://deno.land/x/postgres@v0.17.0/",
-    "danet_swagger/": "https://deno.land/x/danet_swagger/"
+    "@danet/core": "jsr:@danet/core@2.4.3",
+    "@std/dotenv": "jsr:@std/dotenv@0.225.2",
+    "@db/mongo": "jsr:@db/mongo@0.33.0",
+    "@bartlomieju/postgres": "jsr:@bartlomieju/postgres",
+    "@danet/swagger": "jsr:@danet/swagger@2",
+    "@std/assert": "jsr:@std/assert@1.0.6",
+    "@std/testing": "jsr:@std/testing@1.0.3"
   }
 }

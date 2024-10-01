@@ -1,4 +1,4 @@
-import { Module } from 'danet/mod.ts';
+import { Module } from '@danet/core';
 import { TodoModule } from './todo/module.ts';
 import { AppController } from './app.controller.ts';
 
