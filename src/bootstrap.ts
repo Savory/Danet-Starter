@@ -1,4 +1,4 @@
-import '@std/dotenv';
+import 'jsr:@std/dotenv/load';
 import { AppModule } from './app.module.ts';
 import { DanetApplication } from '@danet/core';
 import { loggerMiddleware } from './logger.middleware.ts';
