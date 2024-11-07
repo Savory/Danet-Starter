@@ -29,7 +29,7 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: v1.x
+          deno-version: canary
 
       # Uncomment this step to verify the use of 'deno fmt' on each commit.
       # - name: Verify formatting
@@ -42,7 +42,7 @@ jobs:
         run: deno task test
 
       - name: Install Danet CLI
-        run: deno install --allow-read --allow-write --allow-run --allow-env -n danet https://deno.land/x/danet_cli/main.ts
+        run: deno install --allow-read --allow-write --allow-run --allow-env -n danet jsr:@danet/cli
       - name: Bundle app with danet CLI
         run: danet bundle run.js
       - name: Deploy to Deno Deploy
