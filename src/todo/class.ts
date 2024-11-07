@@ -1,7 +1,8 @@
-import { IsString, LengthGreater } from 'danet/validation.ts';
+import { IsString, LengthGreater } from '@danet/core/validation';
+import type { ObjectId } from '@db/mongo';
 
 export class Todo {
-  readonly _id = crypto.randomUUID();
+  readonly _id: `${string}-${string}-${string}-${string}-${string}` | ObjectId  = crypto.randomUUID();
   @IsString()
   public title: string;
 

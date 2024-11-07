@@ -1,7 +1,7 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from 'danet/mod.ts';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@danet/core';
 import { Todo } from './class.ts';
 import { TodoService } from './service.ts';
-import { ReturnedType } from 'danet_swagger/decorators.ts';
+import { ReturnedType } from '@danet/swagger/decorators';
 
 @Controller('todo')
 export class TodoController {

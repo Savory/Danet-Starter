@@ -1,4 +1,4 @@
-import { Controller, Get } from 'danet/mod.ts';
+import { Controller, Get } from '@danet/core';
 
 @Controller('')
 export class AppController {

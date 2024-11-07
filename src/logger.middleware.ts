@@ -1,4 +1,4 @@
-import { HttpContext, Logger, NextFunction } from 'danet/mod.ts';
+import { HttpContext, Logger, NextFunction } from '@danet/core';
 
 const logger = new Logger('Logger');
 

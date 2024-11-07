@@ -1,6 +1,6 @@
 import { Repository } from '../database/repository.ts';
 import { Todo } from './class.ts';
-import { Inject } from 'danet/mod.ts';
+import { Inject } from '@danet/core';
 import { DATABASE } from '../database/module.ts';
 import { PostgresService } from '../database/postgres.service.ts';
 
