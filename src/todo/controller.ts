@@ -20,6 +20,7 @@ export class TodoController {
     return this.todoService.getById(todoId);
   }
 
+  @ReturnedType(Todo)
   @Post()
   async createTodo(@Body() todo: Todo) {
     return this.todoService.create(todo);
