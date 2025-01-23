@@ -16,7 +16,7 @@
     "emitDecoratorMetadata": true
   },
   "imports": {
-    "@danet/core": "jsr:@danet/core@2.4.3",
+    "@danet/core": "jsr:@danet/core@2",
     "@std/dotenv": "jsr:@std/dotenv@^0.225.3",
     "@db/mongo": "jsr:@db/mongo@0.33.0",
     "@bartlomieju/postgres": "jsr:@bartlomieju/postgres",
